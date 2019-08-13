@@ -47,7 +47,7 @@
           </div>
 
           <div class="section-content section-content--plain">
-            <div class="section-link">
+            <div class="section-link" v-if="person.contact.street">
               <i class="section-link__icon material-icons">business</i>{{ person.contact.street }}
             </div>
 
@@ -71,7 +71,8 @@
             <a
               v-if="person.contact.linkedin"
               class="section-link"
-              :href="contactLinks.linkedin">
+              :href="contactLinks.linkedin"
+              target="_blank">
               <i class="section-link__icon fa fa-linkedin"></i>{{ person.contact.linkedin }}
             </a>
 
@@ -137,14 +138,31 @@
           </div>
         </div>
 
+        <div class="section">
+          <div class="section-headline">
+            <i class="section-headline__icon fa fa-globe"></i>{{ lang.languages }}
+          </div>
+
+          <div class="section-content">
+            <a
+              v-for="(language, index) in person.language"
+              class="section-content__item"
+              :key="index">
+
+              <span class="section-content__subheader">{{ language.name }}</span>
+              <span class="section-content__text"> {{ language.level }} </span>
+              <span class="section-content__text--light"> {{ language.description }} </span>
+            </a>
+          </div>
+        </div>
+
         <div
           v-if="person.projects"
           class="section">
           <div class="section-headline">
             <i class="section-headline__icon material-icons">code</i>{{ lang.projects }}
           </div>
-
-          <div class="section-content-grid">
+          <div class="section-content">
             <a v-for="(project, index) in person.projects" :key="index"
               class="section-content__item-grid"
               :href="project.url">
@@ -364,6 +382,7 @@ a {
 
 .grid-item {
   padding-right: 5px;
+  cursor: initial;
 }
 
 .squarred-grid-item {
