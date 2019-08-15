@@ -8,19 +8,6 @@
 
     <div class="content">
       <div class="content__left">
-        <div class="section">
-          <div class="section-headline">
-            {{ lang.about }}
-          </div>
-
-          <div class="section-content section-content--plain">
-            {{ person.about }}
-            <br/>
-            <br/>
-            {{ person.knowledge }}
-          </div>
-        </div>
-
         <div
           v-if="person.skills"
           class="section">
@@ -38,6 +25,10 @@
                 {{ skill.name }}
               </span>
             </a>
+          </div>
+
+          <div class="section-content section-content--plain" style="margin-top: 10px">
+            {{ person.knowledge }}
           </div>
         </div>
 
@@ -149,8 +140,9 @@
               class="section-content__item"
               :key="index">
 
-              <span class="section-content__subheader">{{ language.name }}</span>
-              <span class="section-content__text"> {{ language.level }} </span>
+              <span class="section-content__header">{{ language.name }}</span>
+              <span class="section-content__subheader">{{ language.level }}</span>
+              <!-- <span class="section-content__text"> {{ language.level }} </span> -->
               <span class="section-content__text--light"> {{ language.description }} </span>
             </a>
           </div>
@@ -211,8 +203,8 @@ export default Vue.component(name, getVueOptions(name));
 </script>
 
 <style lang="less" scoped>
-@accent-color: #34495E;
-@banner-color: #42b883;
+@accent-color: #212121;
+@banner-color: #ff9555;
 @banner-height: 120px;
 @picture-size: 120px;
 @picture-offset: 35px;
@@ -242,7 +234,7 @@ a {
   height: @picture-size;
   width: @picture-size;
   border-radius: 50%;
-  border: 5px solid @accent-color;
+  border: 5px solid white;
   content: url('../../resume/id.jpg');
   z-index: 2;
 }
@@ -285,7 +277,7 @@ a {
 
   &__left {
     width: @left-column-width;
-    color: rgba(255, 255, 255, 0.59);
+    color: rgba(255, 255, 255);
     background-color: @accent-color;
 
     .section-headline {
@@ -300,6 +292,10 @@ a {
 
 .section {
   margin: 20px 0;
+}
+
+i {
+  color: @banner-color;
 }
 
 .section-link,
@@ -319,7 +315,7 @@ a {
 
 .section-link {
   font-size: 1.1em;
-  color: rgba(255, 255, 255, 0.59) !important;
+  color: rgba(255, 255, 255) !important;
 
   &__icon {
     color: white;
