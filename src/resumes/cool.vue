@@ -8,6 +8,14 @@
 
     <div class="content">
       <div class="content__left">
+        <div class="section">
+          <div class="section-headline">
+            {{ lang.about }}
+          </div>
+          <div class="section-content section-content--plain">
+            {{ person.about }}
+          </div>
+        </div>
         <div
           v-if="person.skills"
           class="section">
@@ -156,7 +164,7 @@
           </div>
           <div class="section-content">
             <a v-for="(project, index) in person.projects" :key="index"
-              class="section-content__item-grid"
+              class="section-content__item"
               :href="project.url">
               <span class="section-content__header"> {{ project.name }} </span>
               <span class="section-content__subheader">{{ project.platform }}</span>
